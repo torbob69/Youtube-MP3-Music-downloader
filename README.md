@@ -1,58 +1,70 @@
-🎵 YouTube MP3 Downloader (Python)
+# 🎵 YouTube MP3 Downloader (Python)
 
-A lightweight command-line tool to search and download YouTube videos as high-quality MP3 files. Built for speed, simplicity, and easy customization using yt-dlp and FFmpeg.
+A lightweight command-line tool to **search and download YouTube videos as high-quality MP3 files**. Built for speed, simplicity, and easy customization using **yt-dlp** and **FFmpeg**.
 
-🚀 Features
+---
 
-Search YouTube videos directly from the terminal.
+## 🚀 Features
 
-Download audio in MP3 format.
+* Search YouTube videos directly from the terminal.
+* Download audio in **MP3 format**.
+* Automatic conversion using **FFmpeg**.
+* Supports **batch downloads** (multiple videos at once).
+* Optional `.txt` file input for downloading multiple URLs.
 
-Automatic conversion using FFmpeg.
+---
 
-Supports batch downloads (multiple videos at once).
+## 🛠️ Requirements
 
-Optional .txt file input for downloading multiple URLs.
+1. **Python 3.12+**
+   Download: [python.org](https://www.python.org/downloads/)
+   ⚠️ Ensure Python is added to your system PATH.
 
-🛠️ Requirements
+2. **FFmpeg**
+   Download FFmpeg static build: [gyan.dev](https://www.gyan.dev/ffmpeg/builds/)
+   Recommended setup:
 
-Python 3.12+
-Download: python.org
+   ```
+   C:\ffmpeg\bin
+   ```
 
-⚠️ Ensure Python is added to your system PATH.
+   Add `C:\ffmpeg\bin` to your system **PATH**.
 
-FFmpeg
-Download FFmpeg static build: gyan.dev
+3. **Python Dependencies**
+   Inside your project folder:
 
-Recommended setup:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate      # Windows
+   pip install yt-dlp requests
+   ```
 
-C:\ffmpeg\bin
+---
 
+## 📁 Project Structure
 
-Add C:\ffmpeg\bin to your system PATH.
-
-Python Dependencies
-Inside your project folder:
-
-python -m venv venv
-venv\Scripts\activate      # Windows
-pip install yt-dlp requests
-
-📁 Project Structure
+```
 youtube-mp3-downloader/
 │
 ├── main.py            # Main program
 ├── urls.txt           # (Optional) list of URLs for batch download
 ├── venv/              # Python virtual environment
 └── README.md          # Project documentation
+```
 
-▶️ Usage
+---
+
+## ▶️ Usage
 
 Run the program:
 
+```bash
 python main.py
+```
 
-Example session:
+### Example session:
+
+```
 download path: C:\downloaded music
 Search video (or 'n' to stop): kanye west flashing lights
 Found: https://www.youtube.com/watch?v=ZAz3rnLGthg
@@ -60,42 +72,50 @@ Search video (or 'n' to stop): n
 urls: ['https://www.youtube.com/watch?v=ZAz3rnLGthg']
 Downloading...
 Done!
+```
 
-📄 Batch Download Using .txt File (Optional)
+---
+
+## 📄 Batch Download Using .txt File (Optional)
 
 If you want to download multiple videos without searching manually:
 
-Create a file urls.txt with one URL per line:
+1. Create a file `urls.txt` with one URL per line:
 
+```
 https://www.youtube.com/watch?v=xxxxx
 https://www.youtube.com/watch?v=yyyyy
+```
 
+2. Modify your script to load URLs:
 
-Modify your script to load URLs:
-
+```python
 with open("urls.txt", "r") as f:
     urls = [line.strip() for line in f.readlines()]
+```
 
+3. Download will proceed automatically for all URLs in the file.
 
-Download will proceed automatically for all URLs in the file.
+### Example: Simple Line-by-Line Reader
 
-Example: Simple Line-by-Line Reader
+```python
 with open("urls.txt", "r") as file:
     for line in file:
         print("URL:", line.strip())
+```
 
-🔧 Notes
+---
 
-The downloader runs locally, so no more annoying website ads.
+## 🔧 Notes
 
-Supports high-quality audio conversion.
+* The downloader runs locally, so **no more annoying website ads**.
+* Supports high-quality audio conversion.
+* Fully customizable for your workflow.
 
-Fully customizable for your workflow.
+---
 
-⚡ Future Improvements
+## ⚡ Future Improvements
 
-Add GUI interface for non-terminal users.
-
-Implement playlist downloads.
-
-Add support for other audio formats.
+* Add **GUI interface** for non-terminal users.
+* Implement **playlist downloads**.
+* Add support for **other audio formats**.
